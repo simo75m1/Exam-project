@@ -45,17 +45,6 @@ public abstract class Member
             }
         }
     } //End of constructor
-
-    public boolean getPaid()
-    {
-        return paid;
-    }
-
-    public String getMemberStatus()
-    {
-        return memberStatus;
-    }
-
     public String printMemberInfo()
     {
         return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;

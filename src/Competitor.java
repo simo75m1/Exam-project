@@ -8,19 +8,18 @@ public class Competitor extends Member
     private String time1 = "999";
     private String time2 = "999";
     private String time3 = "999";
+    ArrayList<Competition> competitionInfoList = new ArrayList<>(); // Discipline, competition, placement, time
 
     public Competitor(String name, int age, String memberStatus, boolean paid, String disc1)
     {
         super(name, age, memberStatus, paid);
         this.disc1 = disc1;
-        ArrayList<Competition> competitionInfoList = new ArrayList<>(); // Discipline, competition, placement, time
     }
     public Competitor(String name, int age, String memberStatus, boolean paid, String disc1, String disc2)
     {
         super(name, age, memberStatus, paid);
         this.disc1 = disc1;
         this.disc2 = disc2;
-        ArrayList<Competition> competitionInfoList = new ArrayList<>(); // Discipline, competition, placement, time
     }
     public Competitor(String name, int age, String memberStatus, boolean paid, String disc1, String disc2, String disc3)
     {
@@ -47,17 +46,33 @@ public class Competitor extends Member
         }
     }
 
+    public void setDiscipline(int discInput, String disc)
+    {
+        if(discInput == 1)
+        {
+            this.disc1 = disc;
+        }
+        if(discInput == 2)
+        {
+            this.disc2 = disc;
+        }
+        if(discInput == 3)
+        {
+            this.disc3 = disc;
+        }
+    }
+
     public boolean checkDiscipline(int discInput)
     {
-        if(discInput==1 && disc1 != "")
+        if(discInput==1 && disc1 != "N/A")
         {
             return true;
         }
-        if(discInput==2 && disc2 != "")
+        if(discInput==2 && disc2 != "N/A")
         {
             return true;
         }
-        if(discInput==3 && disc3 != "")
+        if(discInput==3 && disc3 != "N/A")
         {
             return true;
         }
@@ -67,7 +82,7 @@ public class Competitor extends Member
     @Override // for competitor info
     public String printMemberInfo()
     {
-        return super.printMemberInfo();
+        return "\nName: "+ super.getName() + "\nAge: " + super.getAge() + "\nDiscipline 1: " + disc1 + ", " + time1 + "\nDiscipline 2: " + disc2 + ", " + time2 + "\nDiscipline 3: " + disc3 + ", " + time3;
     }
 
 

@@ -19,4 +19,23 @@ public class Competition //Use this class to create competition objects to put i
         return "Discipline: " + discipline + " Competition: " + competition + " Placement: " + placement + " Time: " + time;
     }
 
+    public void setCompetition(String competition)
+    {
+        this.competition = competition;
+    }
+
+    public void setDiscipline(String discipline)
+    {
+        this.discipline = discipline;
+    }
+
+    public void setPlacement(String placement)
+    {
+        this.placement = placement;
+    }
+
+    public void setTime(String time)
+    {
+        this.time = time;
+    }
 }
