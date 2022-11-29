@@ -1,6 +1,6 @@
 import java.time.Year;
 
-public class Member
+public abstract class Member
 {
     private int age;
     private String name;
@@ -44,5 +44,20 @@ public class Member
                 this.price = (this.price * 0.75f);
             }
         }
+    } //End of constructor
+
+    public boolean getPaid()
+    {
+        return paid;
+    }
+
+    public String getMemberStatus()
+    {
+        return memberStatus;
+    }
+
+    public String printMemberInfo()
+    {
+        return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;
     }
 }

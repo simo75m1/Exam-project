@@ -1,4 +1,4 @@
-public class Exerciser
+public class Exerciser extends Member
 {
 
 }
