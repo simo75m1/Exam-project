@@ -15,7 +15,7 @@ public class Competitor extends Member
     {
     }
 
-    public Competitor(String name, int age, String memberStatus, boolean paid)
+    public Competitor(String name, int age, String memberStatus, String memberType, boolean paid)
     {
         super(name, age, memberStatus, paid);
         this.disc1 = disc1;
@@ -28,5 +28,9 @@ public class Competitor extends Member
         return "\nName: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionInfoList;
     }
 
-
+    @Override
+    public String toString()
+    {
+        return super.toString();
+    }
 }

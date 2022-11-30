@@ -20,38 +20,10 @@ public abstract class Member
         {
             paymentYear = Year.now().getValue();
         }
-        if (age < 18)
-        {
-            this.ageGroup = "Juniorsvømmer";
-        }
-        else if (age >= 18 && age < 60)
-        {
-            this.ageGroup = "Seniorsvømmer";
-        }
-
-        if(memberStatus == "Active")
-        {
-            if (ageGroup == "Juniorsvømmer")
-            {
-                this.price = 1000;
-            }
-            else if (ageGroup == "Seniorsvømmer")
-            {
-                this.price = 1600;
-            }
-            if (ageGroup == "Seniorsvømmer" && age >= 60)
-            {
-                this.price = (this.price * 0.75f);
-            }
-        }
-        if (memberStatus == "Passive")
-        {
-            this.price = 500;
-        }
-
+        updateGroupAndPrice();
     } //End of constructor
     public String toString()
     {
-        return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;
+        return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nMember type: " + memberType +"\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;
     }
 }
