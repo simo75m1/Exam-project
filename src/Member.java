@@ -44,8 +44,13 @@ public abstract class Member
                 this.price = (this.price * 0.75f);
             }
         }
+        if (memberStatus == "Passive")
+        {
+            this.price = 500;
+        }
+
     } //End of constructor
-    public String printMemberInfo()
+    public String toString()
     {
         return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;
     }

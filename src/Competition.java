@@ -16,7 +16,7 @@ public class Competition //Use this class to create competition objects to put i
     @Override //for arraylist
     public String toString()
     {
-        return "Discipline: " + discipline + " Competition: " + competition + " Placement: " + placement + " Time: " + time;
+        return "\nDiscipline: " + discipline + " Competition: " + competition + " Placement: " + placement + " Time: " + time;
     }
 
     public void setCompetition(String competition)
