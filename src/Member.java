@@ -80,14 +80,6 @@ public abstract class Member
     public void setAge(int age)
     {
         this.age = age;
-        if (age < 18)
-        {
-            this.ageGroup = "Juniorsvømmer";
-        }
-        else
-        {
-            this.ageGroup = "Seniorsvømmer";
-        }
     }
 
     public void setPaid(boolean paid)

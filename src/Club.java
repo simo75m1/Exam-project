@@ -130,57 +130,78 @@ public class Club
                 {
                     System.out.println("What would you like to change the member type to?\nCasual[1] or Competitor[2]");
                     int editMemberTypeInput = scan.nextInt();
-                    if(editMemberTypeInput == 1)
+                    if(editMemberTypeInput == 1 && memberList.get(editMember).getMemberType() == "competitor")
                     {
-                        memberList.get(editMember).setMemberType("Casual");
-                        //Typecast to casual
+                        String tempName = memberList.get(editMember).getName();
+                        int tempAge = memberList.get(editMember).getAge();
+                        String tempStatus = memberList.get(editMember).getMemberStatus();
+                        String tempType = "casual";
+                        boolean tempPaid = memberList.get(editMember).getPaid();
+                        memberList.set(editMember, new Exerciser(tempName, tempAge, tempStatus, tempType, tempPaid));
                     }
-                    if(editMemberTypeInput == 2)
+                    if(editMemberTypeInput == 2 && memberList.get(editMember).getMemberType() == "casual")
                     {
-                        memberList.get(editMember).setMemberType("Competitor");
-                        //Typecast to competitor
+                        String tempName = memberList.get(editMember).getName();
+                        int tempAge = memberList.get(editMember).getAge();
+                        String tempStatus = memberList.get(editMember).getMemberStatus();
+                        String tempType = "competitor";
+                        boolean tempPaid = memberList.get(editMember).getPaid();
+                        memberList.set(editMember, new Competitor(tempName, tempAge, tempStatus, tempType, tempPaid));
                     }
                     System.out.println("Member type changed to: " + memberList.get(editMember).getMemberType());
                 }
                 break;
             case 3: // Print members
-                printMemberList("all");
-                printMemberList("competitor");
-                printMemberList("exerciser");
+                System.out.println("What type of members do you want to look at?\nAll[1], Competitors[2], Casuals[3]");
+                scan.nextLine();
+                int printChoice = scan.nextInt();
+                if(printChoice == 1)
+                {
+                    printMemberList("all");
+                }
+                if(printChoice == 2)
+                {
+                    printMemberList("competitor");
+                }
+                if(printChoice == 3)
+                {
+                    printMemberList("exerciser");
+                }
                 break;
         }
     } //End of administrationMenu()
-public void printMemberList(String type)
-{
-    int index = 1;
-    if(type == "competitor")
-    {
-        for(Member m : memberList)
-        {
-            if(m instanceof Competitor)
-            {
-                System.out.println((index++) + ". " + m);
-            }
-        }
-    }
-    if(type == "exerciser")
-    {
-        for(Member m : memberList)
-        {
-            if(m instanceof Exerciser)
-            {
-                System.out.println((index++) + ". " + m);
-            }
-        }
-    }
 
-    if(type == "all")
+    public void printMemberList(String type)
     {
-        for(Member m : memberList)
+        int index = 1;
+        if(type == "competitor")
         {
-            System.out.println((index++) + ". " + m);
+            for(Member m : memberList)
+            {
+                if(m instanceof Competitor)
+                {
+                    System.out.println((index++) + ". " + m);
+                }
+            }
+        }
+        if(type == "exerciser")
+        {
+            for(Member m : memberList)
+            {
+                if(m instanceof Exerciser)
+                {
+                    System.out.println((index++) + ". " + m);
+                }
+            }
+        }
+
+        if(type == "all")
+        {
+            for(Member m : memberList)
+            {
+                System.out.println((index++) + ". " + m);
+            }
         }
     }
-}
 
 }
