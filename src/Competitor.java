@@ -2,12 +2,6 @@ import java.util.ArrayList;
 
 public class Competitor extends Member
 {
-    private String disc1 = "";
-    private String disc2 = "";
-    private String disc3 = "";
-    private String time1 = "999";
-    private String time2 = "999";
-    private String time3 = "999";
     ArrayList<Competition> competitionInfoList = new ArrayList<>(); // Discipline, competition, placement, time
     ArrayList<TrainingResult> trainingResultsList = new ArrayList<>(); // Discipline, Time,
 
@@ -17,13 +11,12 @@ public class Competitor extends Member
 
     public Competitor(String name, int age, String memberStatus, String memberType, boolean paid)
     {
-        super(name, age, memberStatus, paid);
-        this.disc1 = disc1;
+        super(name, age, memberStatus, memberType, paid);
     }
 
 
-    @Override // for competitor info
-    public String toString()
+    // for competitor info
+    public String printCompInfo()
     {
         return "\nName: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionInfoList;
     }

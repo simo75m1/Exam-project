@@ -5,16 +5,20 @@ public abstract class Member
     private int age;
     private String name;
     private String memberStatus;
+    private String memberType;
     private String ageGroup;
     private boolean paid;
     private int paymentYear = 0;
     private float price; // defined as a float if the prices changes in the future.
 
-    public Member(String name, int age, String memberStatus, boolean paid)
+    public Member() {}
+
+    public Member(String name, int age, String memberStatus, String memberType, boolean paid)
     {
         this.name = name;
         this.age = age;
         this.memberStatus = memberStatus;
+        this.memberType = memberType;
         this.paid = paid;
         if(paid) //same as paid==true
         {
