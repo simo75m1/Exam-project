@@ -8,6 +8,8 @@ public class Club
     Competitor competitor = new Competitor();
     Scanner scan = new Scanner(System.in);
     ArrayList<Member> memberList = new ArrayList<>();
+
+    //TODO LOAD MEMBER LIST FIL loadMembers(); ELLER LIGNENDE
     private boolean appStart = true;
 
     public void runApp()
@@ -170,6 +172,10 @@ public class Club
                 break;
         }
     } //End of administrationMenu()
+
+    //TODO accountingMenu()
+    //TODO coachMenu()
+    //TODO loadMembers()
 
     public void printMemberList(String type)
     {
