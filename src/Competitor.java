@@ -27,10 +27,4 @@ public class Competitor extends Member
     {
         return "\nName: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionInfoList;
     }
-
-    @Override
-    public String toString()
-    {
-        return super.toString();
-    }
 }
