@@ -2,6 +2,7 @@ import java.time.Year;
 
 public abstract class Member
 {
+    //TODO ? lav age til fødselsår?
     private int age;
     private String name;
     private String memberStatus;
@@ -31,6 +32,10 @@ public abstract class Member
         return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nMember type: " + memberType +"\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;
     }
 
+    public String printCompInfo()
+    {
+        return "No disciplines or competitions";
+    }
     public void updateGroupAndPrice()
     {
         if (this.age < 18)
@@ -42,21 +47,21 @@ public abstract class Member
             this.ageGroup = "senior";
         }
 
-        if(memberStatus == "active")
+        if(memberStatus.equals("active"))
         {
-            if (ageGroup == "junior")
+            if (ageGroup.equals("junior"))
             {
                 this.price = 1000;
-            } else if (ageGroup == "senior")
+            } else
             {
                 this.price = 1600;
             }
-            if (ageGroup == "senior" && age >= 60)
+            if (ageGroup.equals("senior") && age >= 60)
             {
                 this.price = (this.price * 0.75f);
             }
         }
-        if (memberStatus == "passive")
+        if (memberStatus.equals("passive"))
         {
             this.price = 500;
         }

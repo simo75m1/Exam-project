@@ -10,12 +10,12 @@ public class Club
     Exerciser exerciser = new Exerciser();
     Competitor competitor = new Competitor();
     Scanner scan = new Scanner(System.in);
-    ArrayList<Member> memberList = new ArrayList<>();
+    ArrayList<Member> memberList = new ArrayList<>(); //All members
+    ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
     File fileName = new File("data/members.txt");
     OutputStream toFile = new FileOutputStream(fileName, true);
     Scanner fromFile = new Scanner(fileName);
 
-    //TODO LOAD MEMBER LIST FIL loadMembers(); ELLER LIGNENDE
     private boolean appStart = true;
 
     public Club() throws FileNotFoundException
@@ -38,13 +38,13 @@ public class Club
 
                     break;
                 case 3:
-
+                    coachMenu();
                     break;
             }
         } // End of while(appStart)
     } // End of runApp
 
-    public void administrationMenu()
+    public void administrationMenu() throws FileNotFoundException
     {
         System.out.println("Register new member[1], Edit existing member[2], Show member list[3]");
         int admin = scan.nextInt();
@@ -70,10 +70,10 @@ public class Club
                     memberStatusString = "N/A";
                     if (memberStatusInput == 1)
                     {
-                        memberStatusString = "Active";
+                        memberStatusString = "active";
                     } else if (memberStatusInput == 2)
                     {
-                        memberStatusString = "Passive";
+                        memberStatusString = "passive";
                     }
 
                     System.out.println("Is the subscription paid? Yes[1] or No[2]");
@@ -109,7 +109,9 @@ public class Club
                 if(reg == 2)
                 {
                     memberList.add(new Competitor(nameInput, ageInput, memberStatusString, "competitor", paidBoolean));
+                    coachList.add((Competitor) memberList.get(memberList.size()-1));
                 }
+                saveMembers();
                 System.out.println("New member created successfully!");
                 break;
 
@@ -160,6 +162,7 @@ public class Club
                     }
                     System.out.println("Member type changed to: " + memberList.get(editMember).getMemberType());
                 }
+                saveMembers();
                 break;
             case 3: // Print members
                 System.out.println("What type of members do you want to look at?\nAll[1], Competitors[2], Casuals[3]");
@@ -181,6 +184,74 @@ public class Club
         }
     } //End of administrationMenu()
 
+    public void coachMenu() throws FileNotFoundException
+    {
+        System.out.println("Register results[1], Show top five[2]");
+        int cAdmin = scan.nextInt();
+        switch (cAdmin)
+        {
+            case 1: // Register results
+                int compCounter = 0;
+                for (int i = 0; i < memberList.size(); i++)
+                {
+                    if (memberList.get(i) instanceof Competitor)
+                    {
+                        System.out.println(compCounter+1 + ".");
+                        System.out.println(coachList.get(compCounter).printCompInfo());
+                        compCounter++;
+                    }
+                }
+                System.out.println("Which member would you like to edit? [1-" + coachList.size() +"]");
+                int editComp = scan.nextInt()-1;
+                coachList.get(editComp).printCompInfo();
+                System.out.println("What would you like to edit? Training results[1] or competitive results[2]");
+                int editResult = scan.nextInt();
+                System.out.println("New discipline[1] or Edit an existing result[2]");
+                int addResult = scan.nextInt();
+                String tempDisc;
+                String tempTime;
+                String tempDate;
+
+                if (editResult == 1)
+                {
+                    if (addResult == 1)
+                    {
+                        scan.nextLine();
+                        System.out.println("Please enter discipline");
+                        tempDisc = scan.nextLine();
+                        System.out.println("Please enter time");
+                        tempTime = scan.nextLine();
+                        System.out.println("Please enter date");
+                        tempDate = scan.nextLine();
+
+                        coachList.get(editComp).trainingResultsList.add(new TrainingResult(tempDisc, tempTime, tempDate));
+                        saveMembers();
+                    }
+                    if (addResult == 2)
+                    {
+
+                    }
+                }
+                if (editResult == 2)
+                {
+                    if(addResult == 1)
+                    {
+
+                    }
+                    if(addResult == 2)
+                    {
+
+                    }
+                }
+
+
+
+                break;
+            case 2: // Show top five
+                break;
+        }
+    }
+
     public void loadMembers() throws FileNotFoundException
     {
         fromFile = new Scanner(fileName);
@@ -191,6 +262,8 @@ public class Club
         String tempStatus;
         String tempType;
         boolean tempPaid;
+        int loadCounter = 0;
+
         while(fromFile.hasNext())
         {
             fullName = "";
@@ -208,16 +281,55 @@ public class Club
             if (tempType.equals("competitor"))
             {
                 memberList.add(new Competitor(fullName, tempAge, tempStatus, tempType, tempPaid));
+                coachList.add((Competitor) memberList.get(memberCounter));
                 //Can add disciplines here.
             }
             if (tempType.equals("casual"))
             {
                 memberList.add(new Exerciser(fullName, tempAge, tempStatus, tempType, tempPaid));
             }
-            memberList.get(memberCounter).updateGroupAndPrice();
             memberCounter++;
         }
         fromFile.close();
+    }
+
+    public void saveMembers() throws FileNotFoundException
+    {
+        toFile = new PrintStream(new FileOutputStream(fileName, false));
+        String fullName;
+        int tempAge;
+        String tempStatus;
+        String tempType;
+        boolean tempPaid;
+        String fullInfo;
+        int competitorCounter = 0;
+
+        for (int i = 0; i < memberList.size(); i++)
+        {
+            fullName = memberList.get(i).getName();
+            tempAge = memberList.get(i).getAge();
+            tempStatus = memberList.get(i).getMemberStatus();
+            tempType = memberList.get(i).getMemberType();
+            tempPaid = memberList.get(i).getPaid();
+            fullInfo = fullName + " " + tempAge + " " + tempStatus + " " + tempType + " " + tempPaid;
+
+            if (tempType.equals("competitor"))
+            {
+                String tempstr = "";
+                for(int j = 0; j < coachList.get(competitorCounter).trainingResultsList.size(); j++)
+                {
+                  tempstr = coachList.get(competitorCounter).trainingResultsList.get(j).toString();
+                  fullInfo = fullInfo.concat(" " + tempstr);
+                  //TODO tilføj compinfo til saveMembers
+                }
+                competitorCounter++;
+            }
+
+            toFile.println(fullInfo);
+
+
+
+        }
     }
     //TODO accountingMenu()
     //TODO coachMenu()
