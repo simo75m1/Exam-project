@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +10,7 @@ public class Club
     ArrayList<Member> memberList = new ArrayList<>(); //All members
     ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
     File fileName = new File("data/members.txt");
-    OutputStream toFile = new FileOutputStream(fileName, true);
+    PrintStream toFile = new PrintStream(new FileOutputStream(fileName, true));
     Scanner fromFile = new Scanner(fileName);
 
     private boolean appStart = true;

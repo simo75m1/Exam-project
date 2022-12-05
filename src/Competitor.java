@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Competitor extends Member
 {
     ArrayList<Competition> competitionInfoList = new ArrayList<>(); // Discipline, competition, placement, time
-    ArrayList<TrainingResult> trainingResultsList = new ArrayList<>(); // Discipline, Time,
+    ArrayList<TrainingResult> trainingResultsList = new ArrayList<>(); // Discipline, Time, Date
 
     public Competitor()
     {
