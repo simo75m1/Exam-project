@@ -1,4 +1,7 @@
-import java.sql.SQLOutput;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,12 +11,19 @@ public class Club
     Competitor competitor = new Competitor();
     Scanner scan = new Scanner(System.in);
     ArrayList<Member> memberList = new ArrayList<>();
+    File fileName = new File("data/members.txt");
+    OutputStream toFile = new FileOutputStream(fileName, true);
+    Scanner fromFile = new Scanner(fileName);
 
     //TODO LOAD MEMBER LIST FIL loadMembers(); ELLER LIGNENDE
     private boolean appStart = true;
 
-    public void runApp()
+    public Club() throws FileNotFoundException
+    {}
+
+    public void runApp() throws FileNotFoundException
     {
+        loadMembers();
         while(appStart)
         {
             System.out.println("\nMain menu\n----------\n");
@@ -31,8 +41,6 @@ public class Club
 
                     break;
             }
-
-
         } // End of while(appStart)
     } // End of runApp
 
@@ -173,9 +181,46 @@ public class Club
         }
     } //End of administrationMenu()
 
+    public void loadMembers() throws FileNotFoundException
+    {
+        fromFile = new Scanner(fileName);
+        int memberCounter = 0;
+        String tempName;
+        String fullName;
+        int tempAge;
+        String tempStatus;
+        String tempType;
+        boolean tempPaid;
+        while(fromFile.hasNext())
+        {
+            fullName = "";
+            while(!fromFile.hasNextInt())
+            {
+                tempName = fromFile.next();
+                fullName = fullName.concat(tempName + " ");
+            }
+
+            tempAge = fromFile.nextInt();
+            tempStatus = fromFile.next();
+            tempType = fromFile.next();
+            tempPaid = fromFile.nextBoolean();
+
+            if (tempType.equals("competitor"))
+            {
+                memberList.add(new Competitor(fullName, tempAge, tempStatus, tempType, tempPaid));
+                //Can add disciplines here.
+            }
+            if (tempType.equals("casual"))
+            {
+                memberList.add(new Exerciser(fullName, tempAge, tempStatus, tempType, tempPaid));
+            }
+            memberList.get(memberCounter).updateGroupAndPrice();
+            memberCounter++;
+        }
+        fromFile.close();
+    }
     //TODO accountingMenu()
     //TODO coachMenu()
-    //TODO loadMembers()
 
     public void printMemberList(String type)
     {

@@ -35,23 +35,23 @@ public abstract class Member
     {
         if (this.age < 18)
         {
-            this.ageGroup = "Junior";
+            this.ageGroup = "junior";
         }
         else
         {
-            this.ageGroup = "Senior";
+            this.ageGroup = "senior";
         }
 
         if(memberStatus == "Active")
         {
-            if (ageGroup == "Junior")
+            if (ageGroup == "junior")
             {
                 this.price = 1000;
-            } else if (ageGroup == "Senior")
+            } else if (ageGroup == "senior")
             {
                 this.price = 1600;
             }
-            if (ageGroup == "Senior" && age >= 60)
+            if (ageGroup == "senior" && age >= 60)
             {
                 this.price = (this.price * 0.75f);
             }
