@@ -1,0 +1,6 @@
+Simon Hansen 22 active competitor false
+Jens jensen 22 passive casual false
+Peter Hans Petersen 46 active competitor false
+Thea Nøhr 57 passive competitor false
+Hardy Madsen 25 passive competitor false
+Kristoffer Helsk 35 passive competitor true

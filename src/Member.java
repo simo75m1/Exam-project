@@ -42,7 +42,7 @@ public abstract class Member
             this.ageGroup = "senior";
         }
 
-        if(memberStatus == "Active")
+        if(memberStatus == "active")
         {
             if (ageGroup == "junior")
             {
@@ -56,7 +56,7 @@ public abstract class Member
                 this.price = (this.price * 0.75f);
             }
         }
-        if (memberStatus == "Passive")
+        if (memberStatus == "passive")
         {
             this.price = 500;
         }
