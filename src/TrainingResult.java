@@ -34,6 +34,6 @@ public class TrainingResult
     @Override
     public String toString()
     {
-        return "Discipline: " + discipline + " " + time + " " + date;
+        return discipline + " " + time + " " + date;
     }
 }

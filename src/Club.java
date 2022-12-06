@@ -283,24 +283,32 @@ public class Club
                         tempDisc = scan.nextLine();
                         System.out.println("Please enter time");
                         tempTime = scan.nextLine();
-                        System.out.println("Please enter placement at competition");
+                        System.out.println("Please enter the swimmers placement at the competition");
                         tempPlace = scan.nextLine();
-                        System.out.println("Please enter the name of competition");
+                        System.out.println("Please enter the name of the competition");
                         tempComp = scan.nextLine();
 
                         coachList.get(editComp).competitionList.add(new Competition(tempDisc, tempComp, tempPlace, tempTime));
                         System.out.println("Competitive result added!");
-                        saveMembers();
                     }
                     if(addResult == 2) //Edit
                     {
 
 
                     }
+                    if(addResult == 3) //Remove competition
+                    {
+                        for(int i = 0; i < coachList.get(editComp).competitionList.size(); i++)
+                        {
+                            System.out.println((i+1)+ ". " + coachList.get(editComp).competitionList.get(i).toString());
+                        }
+                        System.out.println("Which result do you want to delete? [1-" + coachList.get(editComp).competitionList.size() + "]");
+                        int deleteInput = scan.nextInt()-1;
+                        System.out.println(coachList.get(editComp).competitionList.get(deleteInput).toString() + "deleted from competitive results");
+                        coachList.get(editComp).competitionList.remove(deleteInput);
+                    }
+                    saveMembers();
                 }
-
-
-
                 break;
             case 2: // Show top five
                 break;
@@ -356,6 +364,8 @@ public class Club
         String tempType;
         boolean tempPaid;
         String fullInfo;
+        String fullDiscInfo = "";
+        String fullCompInfo = "";
         int competitorCounter = 0;
 
         for (int i = 0; i < memberList.size(); i++)
@@ -367,22 +377,33 @@ public class Club
             tempPaid = memberList.get(i).getPaid();
             fullInfo = fullName + " " + tempAge + " " + tempStatus + " " + tempType + " " + tempPaid;
 
-            if (tempType.equals("competitor"))
+            if(tempType.equals("competitor"))
             {
-                String tempstr = "";
-                for(int j = 0; j < coachList.get(competitorCounter).trainingResultsList.size(); j++)
+                if (coachList.get(competitorCounter).trainingResultsList.size() > 0)
                 {
-                  tempstr = coachList.get(competitorCounter).trainingResultsList.get(j).toString();
-                  fullInfo = fullInfo.concat(" " + tempstr);
-                  //TODO tilføj compinfo til saveMembers
+                    String tempStr = "";
+                    for (int j = 0; j < coachList.get(competitorCounter).trainingResultsList.size(); j++)
+                    {
+                        tempStr = coachList.get(competitorCounter).trainingResultsList.get(j).toString();
+                        fullDiscInfo = fullDiscInfo.concat(tempStr + " ");
+                    }
+                    fullInfo = fullInfo + "\n" + fullDiscInfo;
+                }
+                if (coachList.get(competitorCounter).competitionList.size() > 0)
+                {
+                    String tempStr = "";
+                    for (int j = 0; j < coachList.get(competitorCounter).competitionList.size(); j++)
+                    {
+                        tempStr = coachList.get(competitorCounter).competitionList.get(j).toString();
+                        fullCompInfo = fullCompInfo.concat(tempStr + " ");
+                    }
+                    fullInfo = fullInfo + "\n" + fullCompInfo;
                 }
                 competitorCounter++;
             }
-
             toFile.println(fullInfo);
-
-
-
+            fullDiscInfo = "";
+            fullCompInfo = "";
         }
     }
     //TODO accountingMenu()
