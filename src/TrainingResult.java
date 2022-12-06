@@ -21,6 +21,11 @@ public class TrainingResult
         this.time = time;
     }
 
+    public void setDate(String date)
+    {
+        this.date = date;
+    }
+
     public String getDiscipline()
     {
         return discipline;
