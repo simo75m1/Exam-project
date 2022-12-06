@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Competitor extends Member
 {
-    ArrayList<Competition> competitionInfoList = new ArrayList<>(); // Discipline, competition, placement, time
+    ArrayList<Competition> competitionList = new ArrayList<>(); // Discipline, competition, placement, time
     ArrayList<TrainingResult> trainingResultsList = new ArrayList<>(); // Discipline, Time, Date
 
     public Competitor()
@@ -18,7 +18,7 @@ public class Competitor extends Member
     // for competitor info
     public String printCompInfo()
     {
-        return "\nName: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionInfoList;
+        return "\nName: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionList;
     }
 
 }

@@ -1,10 +1,10 @@
-Simon Hansen  22 active competitor false
+Simon Hansen  22 active competitor false 
+Discipline: crawl,400m 3:40 04/12/2022
 Jens jensen  22 passive casual false
 Peter Hans Petersen  46 active competitor false
 Thea Nøhr  57 passive competitor false
-Hardy Madsen  25 passive competitor false 
-Discipline: motorcross 12:15 05/12/2022
-Kristoffer Helsk  35 passive competitor true
+Hardy Madsen  25 passive competitor false
+Discipline: motorcross 12:15 05/12/2022 Kristoffer Helsk  35 passive competitor true
 thomas westergaard  65 passive competitor true
 frederik  24 active competitor true
 theo  27 active competitor true

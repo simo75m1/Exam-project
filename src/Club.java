@@ -208,6 +208,8 @@ public class Club
                 String tempDisc;
                 String tempTime;
                 String tempDate;
+                String tempPlace;
+                String tempComp;
 
                 if (editResult == 1)
                 {
@@ -222,21 +224,77 @@ public class Club
                         tempDate = scan.nextLine();
 
                         coachList.get(editComp).trainingResultsList.add(new TrainingResult(tempDisc, tempTime, tempDate));
-                        saveMembers();
+                        System.out.println("Training result added!");
                     }
                     if (addResult == 2)
                     {
-
+                        for(int i = 0; i < coachList.get(editComp).trainingResultsList.size(); i++)
+                        {
+                            System.out.println((i+1)+ ". " + coachList.get(editComp).trainingResultsList.get(i).toString());
+                        }
+                        System.out.println("What discipline do you want to edit? [1-"+ coachList.get(editComp).trainingResultsList.size() + "]");
+                        int discChoice = scan.nextInt()-1;
+                        System.out.println("What would you like to edit? Discipline[1], time[2], date[3]");
+                        int editSingleDisc = scan.nextInt();
+                        if(editSingleDisc == 1)
+                        {
+                            System.out.println("Enter the new name for the discipline");
+                            scan.nextLine();
+                            String nameInput = scan.nextLine();
+                            coachList.get(editComp).trainingResultsList.get(discChoice).setDiscipline(nameInput);
+                            System.out.println("Discipline name updated to " + nameInput);
+                        }
+                        if(editSingleDisc == 2)
+                        {
+                            System.out.println("Enter the new time for the result");
+                            scan.nextLine();
+                            String timeInput = scan.nextLine();
+                            coachList.get(editComp).trainingResultsList.get(discChoice).setTime(timeInput);
+                            System.out.println("Time updated to " + timeInput);
+                        }
+                        if(editSingleDisc == 3)
+                        {
+                            System.out.println("Enter the new date for the result");
+                            scan.nextLine();
+                            String dateInput = scan.nextLine();
+                            coachList.get(editComp).trainingResultsList.get(discChoice).setDate(dateInput);
+                            System.out.println("Date updated to " + dateInput);
+                        }
                     }
+                    if(addResult == 3)
+                    {
+                        for(int i = 0; i < coachList.get(editComp).trainingResultsList.size(); i++)
+                        {
+                            System.out.println((i+1)+ ". " + coachList.get(editComp).trainingResultsList.get(i).toString());
+                        }
+                        System.out.println("Which result do you want to delete? [1-" + coachList.get(editComp).trainingResultsList.size() + "]");
+                        int deleteInput = scan.nextInt()-1;
+                        System.out.println(coachList.get(editComp).trainingResultsList.get(deleteInput).toString() + "deleted from training results");
+                        coachList.get(editComp).trainingResultsList.remove(deleteInput);
+                    }
+                    saveMembers();
                 }
-                if (editResult == 2)
+                if (editResult == 2) //Competitive results
                 {
-                    if(addResult == 1)
+                    if(addResult == 1) //New
+                    {
+                        scan.nextLine();
+                        System.out.println("Please enter discipline");
+                        tempDisc = scan.nextLine();
+                        System.out.println("Please enter time");
+                        tempTime = scan.nextLine();
+                        System.out.println("Please enter placement at competition");
+                        tempPlace = scan.nextLine();
+                        System.out.println("Please enter the name of competition");
+                        tempComp = scan.nextLine();
+
+                        coachList.get(editComp).competitionList.add(new Competition(tempDisc, tempComp, tempPlace, tempTime));
+                        System.out.println("Competitive result added!");
+                        saveMembers();
+                    }
+                    if(addResult == 2) //Edit
                     {
 
-                    }
-                    if(addResult == 2)
-                    {
 
                     }
                 }
@@ -259,7 +317,6 @@ public class Club
         String tempStatus;
         String tempType;
         boolean tempPaid;
-        int loadCounter = 0;
 
         while(fromFile.hasNext())
         {
