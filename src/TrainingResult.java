@@ -1,4 +1,6 @@
 public class TrainingResult
+//TODO Implements Comparable<Trainingresult> virker måske til sortering - Check link
+    //https://www.geeksforgeeks.org/how-to-sort-an-arraylist-of-objects-by-property-in-java/
 {
     private String discipline;
     private String time;
@@ -34,6 +36,11 @@ public class TrainingResult
     public String getTime()
     {
         return time;
+    }
+
+    public String getDate()
+    {
+        return date;
     }
 
     @Override
