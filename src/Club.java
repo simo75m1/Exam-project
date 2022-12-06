@@ -226,7 +226,7 @@ public class Club
                     if (addResult == 1)
                     {
                         scan.nextLine();
-                        System.out.println("Please enter discipline");
+                        System.out.println("Please enter discipline (ONLY ONE WORD!)");
                         tempDisc = scan.nextLine();
                         System.out.println("Please enter time");
                         tempTime = scan.nextLine();
@@ -248,7 +248,7 @@ public class Club
                         int editSingleDisc = scan.nextInt();
                         if(editSingleDisc == 1)
                         {
-                            System.out.println("Enter the new name for the discipline");
+                            System.out.println("Enter the new name for the discipline (ONLY ONE WORD!)");
                             scan.nextLine();
                             String nameInput = scan.nextLine();
                             coachList.get(editComp).trainingResultsList.get(discChoice).setDiscipline(nameInput);
@@ -289,13 +289,13 @@ public class Club
                     if(addResult == 1) //New
                     {
                         scan.nextLine();
-                        System.out.println("Please enter discipline");
+                        System.out.println("Please enter discipline (ONLY ONE WORD!)");
                         tempDisc = scan.nextLine();
                         System.out.println("Please enter time");
                         tempTime = scan.nextLine();
                         System.out.println("Please enter the swimmers placement at the competition");
                         tempPlace = scan.nextLine();
-                        System.out.println("Please enter the name of the competition");
+                        System.out.println("Please enter the name of the competition (ONLY ONE WORD!)");
                         tempComp = scan.nextLine();
 
                         coachList.get(editComp).competitionList.add(new Competition(tempDisc, tempComp, tempPlace, tempTime));
@@ -337,7 +337,7 @@ public class Club
                         }
                         if(editSingleDisc == 4)
                         {
-                            System.out.println("Enter the new competition name");
+                            System.out.println("Enter the new competition name (ONLY ONE WORD!)");
                             scan.nextLine();
                             String competitionInput = scan.nextLine();
                             coachList.get(editComp).competitionList.get(discChoice).setCompetition(competitionInput);
