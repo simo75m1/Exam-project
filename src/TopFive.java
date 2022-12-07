@@ -3,31 +3,20 @@ import java.util.Arrays;
 
 public class TopFive
 {
-    static Club club;
-
-    static
-    {
-        try
-        {
-            club = new Club();
-        } catch (FileNotFoundException e)
-        {
-            throw new RuntimeException(e);
-        }
-    }
-
     //TODO læg det ind som strings med tiden først.
-    static String[] topFiveList = new String[15];
+    private String[] topFiveList = new String[15];
 
     public TopFive() throws FileNotFoundException
     {}
 
-    public static void printTopFive(String discipline)
+    public void printTopFive(String discipline)
     {
+        Arrays.fill(topFiveList, "N/A");
         sortDisciplines(discipline);
-        for (int i = 0; i <= 4; i++)
+        System.out.println("Top five for "+discipline+":");
+        for (int i = 0; i < 5; i++)
         {
-            System.out.println(topFiveList[i]);
+            System.out.println((i+1)+". "+topFiveList[i]);
         }
     }
 
@@ -37,17 +26,18 @@ public class TopFive
         String tempTime;
         String tempName;
         String tempDate;
-        for(int i = 0; i<club.coachList.size(); i++)
+
+        for(int i = 0; i<Club.coachList.size(); i++)
         {
-            for(int j = 0; j < club.coachList.get(i).trainingResultsList.size(); j++)
+            for(int j = 0; j < Club.coachList.get(i).trainingResultsList.size(); j++) //
             {
-                if (discipline.equalsIgnoreCase(club.coachList.get(i).trainingResultsList.get(j).getDiscipline()));
+                if(discipline.equalsIgnoreCase(Club.coachList.get(i).trainingResultsList.get(j).getDiscipline()))
                 {
-                    tempTime = club.coachList.get(i).trainingResultsList.get(j).getTime();
-                    tempName = club.coachList.get(i).getName();
-                    tempDate = club.coachList.get(i).trainingResultsList.get(j).getDate();
+                    tempTime = Club.coachList.get(i).trainingResultsList.get(j).getTime();
+                    tempName = Club.coachList.get(i).getName();
+                    tempDate = Club.coachList.get(i).trainingResultsList.get(j).getDate();
                     tempStr = tempTime +", "+ tempName + ", " + tempDate;
-                    topFiveList[j] = tempStr;
+                    topFiveList[i] = tempStr;
                 }
             }
         }

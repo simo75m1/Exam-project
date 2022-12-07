@@ -6,9 +6,11 @@ public class Club
 {
     Exerciser exerciser = new Exerciser();
     Competitor competitor = new Competitor();
+    TopFive topFive = new TopFive();
+    Accounting accountant = new Accounting();
     Scanner scan = new Scanner(System.in);
-    ArrayList<Member> memberList = new ArrayList<>(); //All members
-    ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
+    static ArrayList<Member> memberList = new ArrayList<>(); //All members
+    static ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
     File fileNameMembers = new File("data/members.txt");
     File fileNameTraining = new File("data/trainingResults.txt");
     File fileNameComp = new File("data/competitionResults.txt");
@@ -38,7 +40,7 @@ public class Club
                     administrationMenu();
                     break;
                 case 2:
-                    accountingMenu();
+                    accountant.accountingMenu();
                     break;
                 case 3:
                     coachMenu();
@@ -187,9 +189,8 @@ public class Club
         }
     } //End of administrationMenu()
 
-    public void accountingMenu()
-    {}
-    //TODO accountingMenu()
+
+    //TODO accountingMenu() i Accounting class
 
     public void coachMenu() throws FileNotFoundException
     {
@@ -358,10 +359,11 @@ public class Club
                     saveMembers();
                 }
                 break;
-            case 2:
-
-                TopFive.printTopFive("Crawl,400m");
-                // Show top five
+            case 2: //Show Top Five
+                System.out.println("Which discipline would you like to see a top five for? (Example[crawl,400m])");
+                scan.nextLine();
+                String discFive = scan.nextLine();
+                topFive.printTopFive(discFive);
                 break;
         }
     }
@@ -491,7 +493,6 @@ public class Club
         toTrainFile.close();
         toCompFile.close();
     }
-
 
     public void printMemberList(String type)
     {
