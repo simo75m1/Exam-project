@@ -20,7 +20,7 @@ public class TopFive
         }
     }
 
-    public static void sortDisciplines(String discipline)
+    public void sortDisciplines(String discipline)
     {
         String tempStr;
         String tempTime;
