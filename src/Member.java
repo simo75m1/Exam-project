@@ -87,14 +87,14 @@ public abstract class Member
         this.age = age;
     }
 
-    public void setPaid(boolean paid)
+    public void setPaid()
     {
-        this.paid = paid;
+        this.paid = !this.paid;
     }
 
-    public void setPaymentYear(int paymentYear)
+    public void setPaymentYear()
     {
-        this.paymentYear = paymentYear;
+        this.paymentYear = Year.now().getValue();
     }
 
     public void setPrice(float price)

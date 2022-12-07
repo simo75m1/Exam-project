@@ -11,12 +11,12 @@ public class Club
     static Scanner scan = new Scanner(System.in);
     static ArrayList<Member> memberList = new ArrayList<>(); //All members
     static ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
-    File fileNameMembers = new File("data/members.txt");
-    File fileNameTraining = new File("data/trainingResults.txt");
-    File fileNameComp = new File("data/competitionResults.txt");
-    PrintStream toMemberFile;
-    PrintStream toTrainFile;
-    PrintStream toCompFile;
+    static File fileNameMembers = new File("data/members.txt");
+    static File fileNameTraining = new File("data/trainingResults.txt");
+    static File fileNameComp = new File("data/competitionResults.txt");
+    static PrintStream toMemberFile;
+    static PrintStream toTrainFile;
+    static PrintStream toCompFile;
     Scanner fromMemberFile;
     Scanner fromTrainFile;
     Scanner fromCompFile;
@@ -29,6 +29,7 @@ public class Club
     public void runApp() throws FileNotFoundException
     {
         loadMembers();
+        accountant.updatePaymentList();
         while(appStart)
         {
             System.out.println("\nMain menu\n----------\n");
@@ -445,7 +446,7 @@ public class Club
         fromCompFile.close();
     }
 
-    public void saveMembers() throws FileNotFoundException
+    public static void saveMembers() throws FileNotFoundException
     {
         toMemberFile = new PrintStream(new FileOutputStream(fileNameMembers, false));
         toTrainFile = new PrintStream(new FileOutputStream(fileNameTraining, false));

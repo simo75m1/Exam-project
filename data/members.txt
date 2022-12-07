@@ -1,11 +1,11 @@
-Simon Hansen  22 active competitor false
-Jens jensen  22 passive casual false
-Peter Hans Petersen  46 active competitor false
-Thea Nøhr  57 passive competitor false
-Hardy Madsen  25 passive competitor false
-Kristoffer Helsk  35 passive competitor true
-thomas westergaard  65 passive competitor true
-Simon Hansen  24 active competitor true
-theo  27 active competitor true
-Theo Frederiksen  40 active competitor true
-Simon Hess  24 active competitor false
+Simon Hansen 22 active competitor false
+Jens jensen 22 passive casual false
+Peter Hans Petersen 46 active competitor false
+Thea Nøhr 57 passive competitor false
+Hardy Madsen 25 passive competitor false
+Kristoffer Helsk 35 passive competitor true
+thomas westergaard 65 passive competitor true
+Simon Hansen 24 active competitor false
+theo 27 active competitor true
+Theo Frederiksen 40 active competitor true
+Simon Hess 24 active competitor false
