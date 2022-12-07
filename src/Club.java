@@ -8,7 +8,7 @@ public class Club
     Competitor competitor = new Competitor();
     TopFive topFive = new TopFive();
     Accounting accountant = new Accounting();
-    Scanner scan = new Scanner(System.in);
+    static Scanner scan = new Scanner(System.in);
     static ArrayList<Member> memberList = new ArrayList<>(); //All members
     static ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
     File fileNameMembers = new File("data/members.txt");
@@ -68,6 +68,7 @@ public class Club
                     System.out.println("Please enter name: ");
                     scan.nextLine();
                     nameInput = scan.nextLine();
+                    nameInput = nameInput.trim();
                     System.out.println("Please enter age: ");
                     ageInput = scan.nextInt();
                     System.out.println("Please choose member status: Active[1] or Passive[2]");
@@ -378,6 +379,7 @@ public class Club
         int competitorCounter = 0;
         String tempName;
         String fullName;
+        String trimmedName;
         int tempAge;
         String tempStatus;
         String tempType;
@@ -396,6 +398,7 @@ public class Club
                 fullName = fullName.concat(tempName + " ");
             }
 
+            trimmedName = fullName.trim();
             tempAge = fromMemberFile.nextInt();
             tempStatus = fromMemberFile.next();
             tempType = fromMemberFile.next();
@@ -403,7 +406,7 @@ public class Club
 
             if (tempType.equals("competitor"))
             {
-                memberList.add(new Competitor(fullName, tempAge, tempStatus, tempType, tempPaid));
+                memberList.add(new Competitor(trimmedName, tempAge, tempStatus, tempType, tempPaid));
                 coachList.add((Competitor) memberList.get(memberCounter));
 
                 trainFileString = fromTrainFile.nextLine();
@@ -431,7 +434,7 @@ public class Club
             }
             if (tempType.equals("casual"))
             {
-                memberList.add(new Exerciser(fullName, tempAge, tempStatus, tempType, tempPaid));
+                memberList.add(new Exerciser(trimmedName, tempAge, tempStatus, tempType, tempPaid));
                 fromTrainFile.nextLine();
                 fromCompFile.nextLine();
             }
