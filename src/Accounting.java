@@ -6,7 +6,7 @@ public class Accounting
     public ArrayList<Member> paymentList = new ArrayList<>();
     public void accountingMenu() throws FileNotFoundException
     {
-        System.out.println("What would you like to do?\nUpdate payment for a member[1] or See members in arrears[2]");
+        System.out.println("What would you like to do?\nUpdate payment for a member[1], See members in arrears[2] or Print all members[3]");
         int accInput = Club.scan.nextInt();
         switch (accInput)
         {
@@ -16,12 +16,17 @@ public class Accounting
                 String nameInput = Club.scan.nextLine();
                 nameInput = nameInput.trim();
                 searchMembers(nameInput);
-
-
-
+                System.out.println("Please choose the member (number on list) whose payment you want to update");
+                int idInput = Club.scan.nextInt() - 1;
+                updateOnePayment(idInput);
+                Club.saveMembers();
+                updatePaymentList();
                 break;
             case 2:
                 printPaymentList();
+                break;
+            case 3:
+                printMemberList();
                 break;
         }
 
@@ -52,7 +57,23 @@ public class Accounting
         }
     }
 
-    public void printPaymentList(){}
+    public void printPaymentList()
+    {
+        int index = 1;
+        for(Member m : paymentList)
+        {
+            System.out.println((index++) + ". " + m);
+        }
+    }
+
+    public void printMemberList()
+    {
+        int index = 1;
+        for(Member m : Club.memberList)
+        {
+            System.out.println((index++) + ". " + m);
+        }
+    }
 
     public void searchMembers(String nameSearch)
     {
