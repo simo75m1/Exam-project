@@ -1,4 +1,5 @@
-public class TrainingResult //Use this object to create training results to place into ArrayList
+//Use this object to create training results to place into ArrayList
+public class TrainingResult
 {
     private String discipline;
     private String time;

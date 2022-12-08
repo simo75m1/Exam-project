@@ -12,8 +12,6 @@ public abstract class Member
     private int paymentYear = 0;
     private float price; // defined as a float if the prices changes in the future.
 
-    public Member() {}
-
     public Member(String name, int age, String memberStatus, String memberType, boolean paid)
     {
         this.name = name;

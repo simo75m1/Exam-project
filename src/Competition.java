@@ -1,4 +1,5 @@
-public class Competition //Use this class to create competition objects to put into Arraylist
+//Use this class to create competition objects to put into Arraylist
+public class Competition
 {
     private String discipline;
     private String competition;

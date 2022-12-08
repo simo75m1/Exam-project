@@ -6,9 +6,6 @@ public class Competitor extends Member
     ArrayList<Competition> competitionList = new ArrayList<>(); // Discipline, competition, placement, time
     ArrayList<TrainingResult> trainingResultsList = new ArrayList<>(); // Discipline, Time, Date
 
-    public Competitor()
-    {
-    }
 
     public Competitor(String name, int age, String memberStatus, String memberType, boolean paid)
     {
