@@ -1,5 +1,6 @@
 import java.time.Year;
 
+//Abstract superclass.
 public abstract class Member
 {
     private int age;
@@ -35,6 +36,8 @@ public abstract class Member
     {
         return "No disciplines or competitions";
     }
+
+    //Method to update member info given age and member status
     public void updateGroupAndPrice()
     {
         if (this.age < 18)

@@ -34,8 +34,8 @@ public class Club
         while(appStart)
         {
             System.out.println("\nMain menu\n----------\n");
-            System.out.println("Administration[1], Accounting[2], Coaching[3]");
-            int menu = scan.nextInt(); // Try catch senere
+            System.out.println("Administration[1], Accounting[2], Coaching[3], Exit program[0]");
+            int menu = scan.nextInt();
             switch(menu)
             {
                 case 1:
@@ -110,11 +110,11 @@ public class Club
                     }
                 }  //end of while(sentinel)
 
-                if (reg == 1)
+                if (reg == 1) //Add casual
                 {
                     memberList.add(new Casual(nameInput, ageInput, memberStatusString, "casual",paidBoolean));
                 }
-                if(reg == 2)
+                if(reg == 2) //Add competitor
                 {
                     memberList.add(new Competitor(nameInput, ageInput, memberStatusString, "competitor", paidBoolean));
                     coachList.add((Competitor) memberList.get(memberList.size()-1));
@@ -240,7 +240,7 @@ public class Club
                         coachList.get(editComp).trainingResultsList.add(new TrainingResult(tempDisc, tempTime, tempDate));
                         System.out.println("Training result added!");
                     }
-                    if (addResult == 2)
+                    if (addResult == 2) //Edit existing result
                     {
                         for(int i = 0; i < coachList.get(editComp).trainingResultsList.size(); i++)
                         {
@@ -258,7 +258,7 @@ public class Club
                             coachList.get(editComp).trainingResultsList.get(discChoice).setDiscipline(nameInput);
                             System.out.println("Discipline name updated to " + nameInput);
                         }
-                        if(editSingleDisc == 2)
+                        if(editSingleDisc == 2) //Edit time of training result
                         {
                             System.out.println("Enter the new time for the result");
                             scan.nextLine();
@@ -305,7 +305,7 @@ public class Club
                         coachList.get(editComp).competitionList.add(new Competition(tempDisc, tempComp, tempPlace, tempTime));
                         System.out.println("Competitive result added!");
                     }
-                    if(addResult == 2) //Edit
+                    if(addResult == 2) //Edit existing comp result
                     {
                         for(int i = 0; i < coachList.get(editComp).competitionList.size(); i++)
                         {
@@ -331,7 +331,7 @@ public class Club
                             coachList.get(editComp).competitionList.get(discChoice).setTime(timeInput);
                             System.out.println("Time updated to " + timeInput);
                         }
-                        if(editSingleDisc == 3)
+                        if(editSingleDisc == 3) //Edit placement for existing competitive result
                         {
                             System.out.println("Enter the new placement for the result");
                             scan.nextLine();
@@ -339,7 +339,7 @@ public class Club
                             coachList.get(editComp).competitionList.get(discChoice).setPlacement(placementInput);
                             System.out.println("Placement updated to " + placementInput);
                         }
-                        if(editSingleDisc == 4)
+                        if(editSingleDisc == 4) //Edit comp name of existing result
                         {
                             System.out.println("Enter the new competition name (ONLY ONE WORD!)");
                             scan.nextLine();
@@ -367,6 +367,8 @@ public class Club
                 scan.nextLine();
                 String discFive = scan.nextLine();
                 topFive.printTopFive(discFive);
+                break;
+            case 0: // exits by breaking
                 break;
         }
     }

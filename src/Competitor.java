@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//Subclass of Member. Initializes arraylists for results.
 public class Competitor extends Member
 {
     ArrayList<Competition> competitionList = new ArrayList<>(); // Discipline, competition, placement, time
