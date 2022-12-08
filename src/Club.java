@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Club
 {
-    Exerciser exerciser = new Exerciser();
-    Competitor competitor = new Competitor();
+    //Instantiating Lists and Objects. The static objects are used in other files.
+    static ArrayList<Member> memberList = new ArrayList<>(); //All members
+    static ArrayList<Competitor> coachList = new ArrayList<>(); //Only competitors
     TopFive topFive = new TopFive();
     Accounting accountant = new Accounting();
     static Scanner scan = new Scanner(System.in);
@@ -111,7 +112,7 @@ public class Club
 
                 if (reg == 1)
                 {
-                    memberList.add(new Exerciser(nameInput, ageInput, memberStatusString, "exerciser",paidBoolean));
+                    memberList.add(new Casual(nameInput, ageInput, memberStatusString, "casual",paidBoolean));
                 }
                 if(reg == 2)
                 {
@@ -156,7 +157,7 @@ public class Club
                         String tempStatus = memberList.get(editMember).getMemberStatus();
                         String tempType = "casual";
                         boolean tempPaid = memberList.get(editMember).getPaid();
-                        memberList.set(editMember, new Exerciser(tempName, tempAge, tempStatus, tempType, tempPaid));
+                        memberList.set(editMember, new Casual(tempName, tempAge, tempStatus, tempType, tempPaid));
                     }
                     if(editMemberTypeInput == 2 && memberList.get(editMember).getMemberType() == "casual")
                     {
@@ -435,7 +436,7 @@ public class Club
             }
             if (tempType.equals("casual"))
             {
-                memberList.add(new Exerciser(trimmedName, tempAge, tempStatus, tempType, tempPaid));
+                memberList.add(new Casual(trimmedName, tempAge, tempStatus, tempType, tempPaid));
                 fromTrainFile.nextLine();
                 fromCompFile.nextLine();
             }
@@ -515,7 +516,7 @@ public class Club
         {
             for(Member m : memberList)
             {
-                if(m instanceof Exerciser)
+                if(m instanceof Casual)
                 {
                     System.out.println((index++) + ". " + m);
                 }

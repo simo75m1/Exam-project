@@ -6,7 +6,7 @@ public class Accounting
     public ArrayList<Member> paymentList = new ArrayList<>();
     public void accountingMenu() throws FileNotFoundException
     {
-        System.out.println("What would you like to do?\nUpdate payment for a member[1], See members in arrears[2] or Print all members[3]");
+        System.out.println("What would you like to do?\nUpdate payment for a member[1], See members in arrears[2], Print all members[3], Exit[0]");
         int accInput = Club.scan.nextInt();
         switch (accInput)
         {

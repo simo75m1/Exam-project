@@ -2,7 +2,6 @@ import java.time.Year;
 
 public abstract class Member
 {
-    //TODO ? lav age til fødselsår?
     private int age;
     private String name;
     private String memberStatus;
