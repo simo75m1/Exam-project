@@ -323,7 +323,7 @@ public class Club
                             coachList.get(editComp).competitionList.get(discChoice).setDiscipline(nameInput);
                             System.out.println("Discipline name updated to " + nameInput);
                         }
-                        if(editSingleDisc == 2)
+                        if(editSingleDisc == 2) //Edit time for existing competitive result
                         {
                             System.out.println("Enter the new time for the result");
                             scan.nextLine();
