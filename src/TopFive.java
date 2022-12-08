@@ -1,14 +1,14 @@
 import java.io.FileNotFoundException;
 import java.util.Arrays;
-
+//Use this class to sort results of competitive members
 public class TopFive
 {
-    //TODO læg det ind som strings med tiden først.
     private String[] topFiveList = new String[15];
 
     public TopFive() throws FileNotFoundException
     {}
 
+    //Prints first 5 results of the sorted Array of disciplines
     public void printTopFive(String discipline)
     {
         Arrays.fill(topFiveList, "N/A");
@@ -20,6 +20,8 @@ public class TopFive
         }
     }
 
+    //Checks all members results, and compares to input from user. Any matches in search is
+    //placed inside Array and sorted in ascending order.
     public void sortDisciplines(String discipline)
     {
         String tempStr;

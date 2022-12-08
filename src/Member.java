@@ -29,7 +29,7 @@ public abstract class Member
     } //End of constructor
     public String toString()
     {
-        return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nMember type: " + memberType +"\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price;
+        return "\nName: " + name + "\nAge: " + age + "\nMember status: " + memberStatus + "\nMember type: " + memberType +"\nPaid: " + paid + "\nLast payment: " + paymentYear + "\nPrice: " + price + "\n";
     }
 
     public String printCompInfo()

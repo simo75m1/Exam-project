@@ -1,6 +1,4 @@
-public class TrainingResult
-//TODO Implements Comparable<Trainingresult> virker måske til sortering - Check link
-    //https://www.geeksforgeeks.org/how-to-sort-an-arraylist-of-objects-by-property-in-java/
+public class TrainingResult //Use this object to create training results to place into ArrayList
 {
     private String discipline;
     private String time;

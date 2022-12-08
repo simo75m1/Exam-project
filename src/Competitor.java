@@ -19,7 +19,7 @@ public class Competitor extends Member
     // for competitor info
     public String printCompInfo()
     {
-        return "\nName: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionList;
+        return "Name: "+ super.getName() + "\nAgegroup: " + super.getAgeGroup() + "\nTraining result(s): " + trainingResultsList + "\nCompetition info: " + competitionList+"\n";
     }
 
 }

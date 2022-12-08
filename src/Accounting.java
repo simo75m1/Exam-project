@@ -28,9 +28,12 @@ public class Accounting
             case 3:
                 printMemberList();
                 break;
+            case 0:
+                break;
         }
-
     }
+
+    //Updates whether a member has paid
     public void updateOnePayment(int idInput)
     {
         Club.memberList.get(idInput).setPaid();
@@ -38,6 +41,7 @@ public class Accounting
         Club.memberList.get(idInput).setPaymentYear();
     }
 
+    //Updates paymentList based on payment status
     public void updatePaymentList()
     {
         for(int i = 0; i<Club.memberList.size(); i++)
@@ -75,6 +79,7 @@ public class Accounting
         }
     }
 
+    //Searches for member name, and shows all matches.
     public void searchMembers(String nameSearch)
     {
         boolean searchConfirmed = false;
